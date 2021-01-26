@@ -144,5 +144,12 @@ public static int[] rollSichermanDiceNTimes(int n){
    return trackDice;
 
 }
-
+public static void main(String[] args){
+   StdOut.println("How many dice would you like to roll?");
+   int response = StdIn.readInt();
+   StdOut.println("Normal dice distribution:");
+   Dice.rollNormalDiceNTimes(response);
+   StdOut.println("Sicherman dice distribution:");
+   Dice.rollSichermanDiceNTimes(response);
+}
 }

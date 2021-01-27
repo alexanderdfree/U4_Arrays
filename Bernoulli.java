@@ -61,6 +61,12 @@ public class Bernoulli{
       distNumHeads(4, 0.5, 10)  -> [1, 3, 4, 1, 1]
       */
       
+      int[] storageArr = new int[nCoin+1];
+      for (int i = 0; i < nReps; i++){
+         int tracker = Bernoulli.numHeads(nCoin, p);
+         storageArr[tracker]++;
+      }
+      return storageArr;
     
    }
 

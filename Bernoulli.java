@@ -82,8 +82,8 @@ public class Bernoulli{
       int response2 = StdIn.readInt();
       StdOut.println("Frequency of each outcome:");
       int[] array1 = Bernoulli.distNHeads(response, responseD, response2);
-      for (int i = 0; i < 10; i++){
-      
+      for (int i = 0; i < response + 1; i++){
+         StdOut.println(i + ": " + (1.0*array1[i])/response2);
       }
 
 }

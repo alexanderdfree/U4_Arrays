@@ -81,6 +81,11 @@ public class Bernoulli{
       StdOut.println("How many trials would you like to run?");
       int response2 = StdIn.readInt();
       StdOut.println("Frequency of each outcome:");
+      int[] array1 = Bernoulli.distNHeads(response, responseD, response2);
+      for (int i = 0; i < 10; i++){
+      
+      }
+
 }
 
 }

@@ -68,10 +68,19 @@ public class Bernoulli{
          storageArr[tracker]++;
       }
       
-      StdOut.println(Arrays.toString(storageArr));
+      //StdOut.println(Arrays.toString(storageArr));
       return storageArr;
     
    }
 
+   public static void main(String[] args){
+      StdOut.println("How many coins would you like to flip?");
+      int response = StdIn.readInt();
+      StdOut.println("What are the odds of getting heads?");
+      double responseD = StdIn.readDouble();
+      StdOut.println("How many trials would you like to run?");
+      int response2 = StdIn.readInt();
+      StdOut.println("Frequency of each outcome:");
+}
 
 }

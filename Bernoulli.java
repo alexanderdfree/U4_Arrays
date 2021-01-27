@@ -43,6 +43,26 @@ public class Bernoulli{
    
    
    }
+   public static int[] distNHeads(int nCoin, double p, int nReps){
+      /*Flip nCoin coins with odds p. Repeat the experiment nReps
+      times, keeping track of how often you see each result.
+      Inputs:
+         int nCoin: how many coins to flip in each trial
+         double p: the odds of heads on each flip
+         int nReps: the number of times to repeat the experiment
+      Outputs:
+         return: an int[] showing how often you got each total # of
+                 heads. (the index of the array is the num. of
+                 heads seen in a given trial, the value of the
+                 array is how many trials you saw that many heads)
+      Ex.
+      distNumHeads(1, 1.0, 100) -> [0, 100]
+      distNumHeads(2, 0.5, 20)  -> [4, 11, 5]
+      distNumHeads(4, 0.5, 10)  -> [1, 3, 4, 1, 1]
+      */
+      
+    
+   }
 
 
 }

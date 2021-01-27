@@ -1,3 +1,4 @@
+import java.util.*;
 public class Bernoulli{
    public static boolean flipCoin(double p){
    /*Flip a possibly unfair coin with probability of heads p
@@ -66,6 +67,8 @@ public class Bernoulli{
          int tracker = Bernoulli.numHeads(nCoin, p);
          storageArr[tracker]++;
       }
+      
+      StdOut.println(Arrays.toString(storageArr));
       return storageArr;
     
    }

@@ -15,16 +15,23 @@ public class FibonacciArray{
    */
    
    int[] sequenceTracker = new int[n];
-   StdOut.println(Arrays.toString(sequenceTracker));
+   //StdOut.println(Arrays.toString(sequenceTracker));
    sequenceTracker[0] = 0;
    if (n == 1) return sequenceTracker;
    sequenceTracker[1] = 1;
    for (int i = 2; i < n; i++) {
       sequenceTracker[i] = sequenceTracker[i-1] + sequenceTracker[i-2];
    }
-   StdOut.println(Arrays.toString(sequenceTracker));
+   //StdOut.println(Arrays.toString(sequenceTracker));
    return sequenceTracker;
-
-
+}
+ public static void main(String[] args){
+      StdOut.println("How many numbers in the Fibonacci sequence would you like to calculate?");
+      int response = StdIn.readInt();
+      for (int i = 1; i < response+1; i++){
+         int[] arr = FibonacciArray.firstN(i);
+         int lastDigit = arr[i-1];
+         StdOut.println(i + ": " + lastDigit);
+      }
 }
 }

@@ -1,6 +1,6 @@
 import java.util.*;
 public class FibonacciArray{
-   public static int[] firstN(int n){
+   public static long[] firstN(int n){
    /*Calculate the first n Fibonacci numbers
    Input:
       int n: how many fibonacci numbers to calculate
@@ -14,7 +14,7 @@ public class FibonacciArray{
    firstN(5) -> [0, 1, 1, 2, 3]
    */
    
-   int[] sequenceTracker = new int[n];
+   long[] sequenceTracker = new long[n];
    //StdOut.println(Arrays.toString(sequenceTracker));
    sequenceTracker[0] = 0;
    if (n == 1) return sequenceTracker;
@@ -29,8 +29,8 @@ public class FibonacciArray{
       StdOut.println("How many numbers in the Fibonacci sequence would you like to calculate?");
       int response = StdIn.readInt();
       for (int i = 1; i < response+1; i++){
-         int[] arr = FibonacciArray.firstN(i);
-         int lastDigit = arr[i-1];
+         long[] arr = FibonacciArray.firstN(i);
+         long lastDigit = arr[i-1];
          StdOut.println(i + ": " + lastDigit);
       }
 }

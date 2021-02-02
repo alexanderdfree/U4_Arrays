@@ -1,6 +1,6 @@
 import java.util.*;
 public class Pascal{
-   public static int[] nextRow(int[] prev){
+   public static long[] nextRow(long[] prev){
    /*Given a previous row, generate the next row
    of Pascal's Triangle.
    Input:
@@ -15,7 +15,7 @@ public class Pascal{
    nextRow(new int[]{1, 1}) -> [1, 2, 1]
    nextRow(new int[]{1, 2, 1}) -> [1, 3, 3, 1]
    */
-   int[] newRow = new int[prev.length+1];
+   long[] newRow = new long[prev.length+1];
    newRow[0] = 1;
    newRow[prev.length] = 1;
    //StdOut.println(Arrays.toString(newRow));
@@ -29,7 +29,7 @@ public class Pascal{
    public static void main(String[] args){
       StdOut.println("How many rows of Pascal's triangle would you like?");
       int response = StdIn.readInt();
-      int[] row = new int [0];
+      long[] row = new long [0];
       if (response != 0) {
       StdOut.println("[1]");
       for (int i = 0; i < response-1; i++){

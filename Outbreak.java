@@ -37,5 +37,64 @@ public static int countSuscept(int[] pop){
       }
       return numSus;
 }
-
+   public static int countNewlyInfected(int[] pop){
+      /*Count how many people in the current population are 
+      newly infected
+      Input:
+         int[] pop: the population we are simulating
+      Output:
+         return: the number of people in the current population
+                 that are newly infected
+      Ex.
+      int[] pop = new int[] {0, 0, 0, 0, 1, 1, 1, 2, 2, 3};
+      countNewlyInfected(pop) -> 3
+      */
+      int numNew = 0;
+      for(int i = 0; i < pop.length; i++){
+         if (pop[i] == 0){
+            numNew++;
+         }
+      }
+      return numNew;
+}
+   public static int countContagious(int[] pop){
+         /*Count how many people in the current population are 
+         contagious
+         Input:
+            int[] pop: the population we are simulating
+         Output:
+            return: the number of people in the current population
+                    that are contagious
+         Ex.
+         int[] pop = new int[] {0, 0, 0, 0, 1, 1, 1, 2, 2, 3};
+         countContagious(pop) -> 2
+         */
+         int numContagious = 0;
+         for(int i = 0; i < pop.length; i++){
+            if (pop[i] == 0){
+               numContagious++;
+            }
+         }
+         return numContagious;
+}
+   public static int countRecovered(int[] pop){
+         /*Count how many people in the current population are 
+         recovered
+         Input:
+            int[] pop: the population we are simulating
+         Output:
+            return: the number of people in the current population
+                    that are recovered
+         Ex.
+         int[] pop = new int[] {0, 0, 0, 0, 1, 1, 1, 2, 2, 3};
+         countRecovered(pop) -> 1
+         */
+         int numRecovered = 0;
+      for(int i = 0; i < pop.length; i++){
+         if (pop[i] == 0){
+            numRecovered++;
+         }
+      }
+      return numRecovered;
+}
 }

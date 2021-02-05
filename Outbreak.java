@@ -216,7 +216,7 @@ public static int countSuscept(int[] pop){
    for (int i = 0; i < n; i++){
       double random = Math.random();
       double doubleAt = pop.length * random;
-      int intAt = (int) doubleAt + 1;
+      int intAt = (int) doubleAt;
       Outbreak.expose(pop, intAt);
    }
 }
@@ -273,21 +273,31 @@ public static int countSuscept(int[] pop){
    public static void main(String args[]){
       StdOut.println("How many people in the population?");
       int population = StdIn.readInt();
+      
       StdOut.println("What is the R0 (avg. num. new infections per contagious person)?");
       double r0 = StdIn.readDouble();
-      StdOut.println("What fraction of the population should be initially infected?");
-      double initial = StdIn.readDouble();
+      
       StdOut.println("What fraction of the population should be vaccinated?");
       double vaccinated = StdIn.readDouble();
+      
+      StdOut.println("What fraction of the population should be initially infected?");
+      double initial = StdIn.readDouble();
+      
       StdOut.println("How many steps would you like to simulate?");
       int steps = StdIn.readInt();
+      
       int[] pop = new int[population];
       int initialInfected = (int) (initial * pop.length);
+      int initialVaxx = (int) (vaccinated * pop.length);
       //StdOut.println(initialInfected);
-      for (int i = 0; i < initialInfected; i++){
+      
+      for (int i = 0; i < initialVaxx; i++){
+         pop[i] = 3;
+      }
+      for (int i = pop.length-1; i > pop.length-initialInfected-1; i--){
          pop[i] = 2;
       }
-      StdOut.println(Arrays.toString(pop));
+      //StdOut.println(Arrays.toString(pop));
       StdOut.println("Step	Sus.	Inf.	Rec.");
       for (int i = 0; i < steps; i++){
          int infected = Outbreak.countContagious(pop) + Outbreak.countNewlyInfected(pop);

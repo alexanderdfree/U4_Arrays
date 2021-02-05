@@ -97,4 +97,56 @@ public static int countSuscept(int[] pop){
          }
          return numRecovered;
 }
+   public static void expose(int[] pop, int index){
+      /*Expose the person at index with the pathogen. 
+      If they are susceptible they become infected. If already 
+      sick or recovered they will be unaffected.
+      Input:
+         int[] pop: the population we are simulating
+         int index: the index of the person to expose
+      Output: None
+      Side Effects: the person in pop at index will be infected
+      if they weren't already
+      Ex.
+      int[] pop = new int[]{3, 2, 1, 0};
+      Arrays.toString(pop) -> [3, 2, 1, 0]
+      expose(pop, 0)
+      Arrays.toString(pop) -> [3, 2, 1, 0]
+      expose(pop, 1)
+      Arrays.toString(pop) -> [3, 2, 1, 0]
+      expose(pop, 2)
+      Arrays.toString(pop) -> [3, 2, 1, 0]
+      expose(pop, 3)
+      Arrays.toString(pop) -> [3, 2, 1, 1]
+      */
+      int status = pop[index];
+      if (status == 0) {
+         pop[index] = 1;
+      }
+}
+   public static void progress(int pop[]){
+      /*Progress the disease state of everyone in pop
+      0 -> 0 (susceptible remain susceptible)
+      1 -> 2 (newly infected become contagious)
+      2 -> 3 (contagious recover)
+      3 -> 3 (recovered stay the same)
+      Input:
+         int pop[]: the population we are simulating
+      Output: None
+      Side Effects: every member of pop's disease state
+                    has been appropriately updated.
+      Ex.
+      pop = new int[]{3, 0, 1}
+      Arrays.toString(pop) -> [3, 0, 1]
+      progress(pop);
+      Arrays.toString(pop) -> [3, 0, 2]
+      progress(pop);
+      Arrays.toString(pop) -> [3, 0, 3]
+      */
+      for (int i = 0; i < pop.length; i++){
+         if (pop[i] == 1 || pop[i] == 2){
+            pop[i]++;
+         }
+      }
+}
 }

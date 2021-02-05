@@ -149,7 +149,11 @@ public static int countSuscept(int[] pop){
          }
       }
 }
-   public static void exposeN(int[] pop, int n){
+   public static void exposeNnomatterwhat(int[] pop, int n){
+      //accidentally followed the directions wrong
+      //and made my own method that keeps going
+      //until it affects 2 people
+      
       /*Expose n randomly selected members of the population to
       the pathogen. If the exposed people are susceptible, they
       will become sick. If they are already sick or immune, they
@@ -181,7 +185,6 @@ public static int countSuscept(int[] pop){
             counter++;
          }
       }
-      
       /*for (int i = 0; i < pop.length; i++){
          criteria = 1.0/(n - i);
          double randomNum = Math.random();
@@ -191,4 +194,106 @@ public static int countSuscept(int[] pop){
          }
       }*/
 }
+   public static void exposeN(int[] pop, int n){
+      /*Expose n randomly selected members of the population to
+      the pathogen. If the exposed people are susceptible, they
+      will become sick. If they are already sick or immune, they
+      will be unaffected.
+      Input:
+         int[] pop: the population we are simulating
+         int n: the number of randomly-selected individuals to
+                expose
+      Output: None
+      Side Effects: n randomly-selected members of the
+                    population have been exposed to the disease
+                    and may or may not be newly infected.
+      Ex.
+      int[] pop = new int[10];
+      Arrays.toString(pop) -> [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      exposeN(pop, 2);
+      Arrays.toString(pop) -> [0, 0, 1, 0, 0, 1, 0, 0, 0, 0]
+      */
+   for (int i = 0; i < n; i++){
+      double random = Math.random();
+      double doubleAt = pop.length * random;
+      int intAt = (int) doubleAt + 1;
+      Outbreak.expose(pop, intAt);
+   }
+}
+   public static void spread(int[] pop, double r0){
+      /*Simulate the spread of disease from contagious members
+      of a population. Each contagious individual will try to
+      expose a random number (Poisson-distributed, r0 on avg.)
+      of other people to the pathogen.
+      Input:
+         int[] pop: the population we are simulating
+         double r0: the avg. number of people infected by each
+                    contagious person
+      Output: None
+      Side Effects: Contagious individuals have exposed
+      randomly selected members of the population
+      Ex.
+      int[] pop = new int[10];
+      pop[0] = 2;
+      Arrays.toString(pop) -> [2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      spread(pop, 1.5)
+      Arrays.toString(pop) -> [2, 0, 1, 0, 0, 1, 0, 0, 0, 0]
+      */
+   for (int i = 0; i < pop.length; i++){
+      if (pop[i] == 2){
+         int random = StdRandom.poisson(r0);
+         Outbreak.exposeN(pop, random);
+      }
+   }
+}
+   public static void step(int pop[], double r0){
+      /*Simulate one round of disease spread. Each
+      round contagious people spread to randomly selected
+      new people. Then, everyone's state updates:
+      0 -> 0 (susceptible remain susceptible)
+      1 -> 2 (newly infected become contagious)
+      2 -> 3 (contagious recover)
+      3 -> 3 (recovered stay the same
+      Input:
+         int pop[]: the population we are simulating
+         double r0: the avg. num. of exposures from each
+                    contagious person
+      Output: None
+      Side Effects: pop has been updated by one round
+      Ex.
+      int[] pop = new int[5];
+      pop[0] = 2;
+      Arrays.toString(pop) -> [2, 0, 0, 0, 0]
+      step(pop, 2.0)
+      Arrays.toString(pop) -> [3, 0, 2, 0, 2]
+      */
+   Outbreak.spread(pop, r0);
+   Outbreak.progress(pop);
+}
+   public static void main(String args[]){
+      StdOut.println("How many people in the population?");
+      int population = StdIn.readInt();
+      StdOut.println("What is the R0 (avg. num. new infections per contagious person)?");
+      double r0 = StdIn.readDouble();
+      StdOut.println("What fraction of the population should be initially infected?");
+      double initial = StdIn.readDouble();
+      StdOut.println("What fraction of the population should be vaccinated?");
+      double vaccinated = StdIn.readDouble();
+      StdOut.println("How many steps would you like to simulate?");
+      int steps = StdIn.readInt();
+      int[] pop = new int[population];
+      int initialInfected = (int) (initial * pop.length);
+      //StdOut.println(initialInfected);
+      for (int i = 0; i < initialInfected; i++){
+         pop[i] = 2;
+      }
+      StdOut.println(Arrays.toString(pop));
+      StdOut.println("Step	Sus.	Inf.	Rec.");
+      for (int i = 0; i < steps; i++){
+         int infected = Outbreak.countContagious(pop) + Outbreak.countNewlyInfected(pop);
+         String printed = i + " " + Outbreak.countSuscept(pop) + " " + infected + " " + Outbreak.countRecovered(pop);
+         StdOut.println(printed);
+         Outbreak.step(pop, r0);
+      }
+   }
 }

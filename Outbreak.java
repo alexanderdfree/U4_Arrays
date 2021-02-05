@@ -51,7 +51,7 @@ public static int countSuscept(int[] pop){
       */
       int numNew = 0;
       for(int i = 0; i < pop.length; i++){
-         if (pop[i] == 0){
+         if (pop[i] == 1){
             numNew++;
          }
       }
@@ -71,7 +71,7 @@ public static int countSuscept(int[] pop){
          */
          int numContagious = 0;
          for(int i = 0; i < pop.length; i++){
-            if (pop[i] == 0){
+            if (pop[i] == 2){
                numContagious++;
             }
          }
@@ -90,11 +90,11 @@ public static int countSuscept(int[] pop){
          countRecovered(pop) -> 1
          */
          int numRecovered = 0;
-      for(int i = 0; i < pop.length; i++){
-         if (pop[i] == 0){
-            numRecovered++;
+         for(int i = 0; i < pop.length; i++){
+            if (pop[i] == 3){
+               numRecovered++;
+            }
          }
-      }
-      return numRecovered;
+         return numRecovered;
 }
 }

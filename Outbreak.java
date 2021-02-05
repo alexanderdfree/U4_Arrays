@@ -149,4 +149,46 @@ public static int countSuscept(int[] pop){
          }
       }
 }
+   public static void exposeN(int[] pop, int n){
+      /*Expose n randomly selected members of the population to
+      the pathogen. If the exposed people are susceptible, they
+      will become sick. If they are already sick or immune, they
+      will be unaffected.
+      Input:
+         int[] pop: the population we are simulating
+         int n: the number of randomly-selected individuals to
+                expose
+      Output: None
+      Side Effects: n randomly-selected members of the
+                    population have been exposed to the disease
+                    and may or may not be newly infected.
+      Ex.
+      int[] pop = new int[10];
+      Arrays.toString(pop) -> [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      exposeN(pop, 2);
+      Arrays.toString(pop) -> [0, 0, 1, 0, 0, 1, 0, 0, 0, 0]
+      */
+      int total = Outbreak.countSuscept(pop);
+      //Math.random(0, total);
+      //double criteria = 1.0/n;
+      int counter = 0;
+      while (counter < n){
+         double random = Math.random();
+         double doubleAt = pop.length * random;
+         int intAt = (int) doubleAt;
+         if (pop[intAt] == 0){
+            pop[intAt] = 1;
+            counter++;
+         }
+      }
+      
+      /*for (int i = 0; i < pop.length; i++){
+         criteria = 1.0/(n - i);
+         double randomNum = Math.random();
+         if (randomNum > criteria && pop[i] == 0 && counter < n) {
+            pop[i] = 1;
+            counter++;
+         }
+      }*/
+}
 }

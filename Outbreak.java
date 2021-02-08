@@ -290,13 +290,13 @@ public static int countSuscept(int[] pop){
       int initialInfected = (int) (initial * pop.length);
       int initialVaxx = (int) (vaccinated * pop.length);
       //StdOut.println(initialInfected);
-      
+      Outbreak.exposeN(pop, initialInfected);
       for (int i = 0; i < initialVaxx; i++){
          pop[i] = 3;
       }
-      for (int i = pop.length-1; i > pop.length-initialInfected-1; i--){
+      /*for (int i = pop.length-1; i > pop.length-initialInfected-1; i--){
          pop[i] = 2;
-      }
+      }*/
       //StdOut.println(Arrays.toString(pop));
       StdOut.println("Step	Sus.	Inf.	Rec.");
       for (int i = 0; i < steps; i++){
